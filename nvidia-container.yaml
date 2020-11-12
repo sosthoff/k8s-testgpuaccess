@@ -3,6 +3,13 @@ kind: Pod
 metadata:
   name: gpu-pod
   namespace: default
+rules:
+- apiGroups: [""]
+  resources: ["pods", "pods/log"]
+  verbs: ["get", "list"]
+- apiGroups: [""]
+  resources: ["pods/exec"]
+  verbs: ["create"]
 spec:
   containers:
     - name: cuda-container
